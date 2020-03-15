@@ -322,11 +322,8 @@ impl Transport {
                                     {
                                         if let Err(err) = tx.send(browser_event.clone()) {
                                             let mut event_string = format!("{:?}", browser_event);
-                                            event_string.truncate(400);
-                                            warn!(
-                                                "Couldn't send browser an event: {:?}\n{:?}",
-                                                event_string, err
-                                            );
+                                            // event_string.truncate(400);
+                                            warn!("Couldn't send browser an event",);
                                             break;
                                         }
                                     }

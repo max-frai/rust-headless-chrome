@@ -275,8 +275,8 @@ impl<'a> Tab {
                     }
                     _ => {
                         let mut raw_event = format!("{:?}", event);
-                        raw_event.truncate(50);
-                        trace!("Unhandled event: {}", raw_event);
+                        // raw_event.truncate(50);
+                        trace!("Unhandled event");
                     }
                 }
             }
