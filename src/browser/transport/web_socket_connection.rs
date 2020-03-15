@@ -72,9 +72,10 @@ impl WebSocketConnection {
                         debug!("WS IO Error for Chrome #{:?}: {}", process_id, err);
                         break;
                     }
-                    _ => panic!(
+                    _ => trace!(
                         "Unhandled WebSocket error for Chrome #{:?}: {:?}",
-                        process_id, error
+                        process_id,
+                        error
                     ),
                 },
                 Ok(message) => {
@@ -90,7 +91,7 @@ impl WebSocketConnection {
                             );
                         }
                     } else {
-                        panic!("Got a weird message: {:?}", message)
+                        trace!("Got a weird message: {:?}", message)
                     }
                 }
             }
