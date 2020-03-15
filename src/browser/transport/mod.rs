@@ -158,20 +158,20 @@ impl Transport {
             }
         }
 
-        let mut params_string = format!("{:?}", call.get_params());
-        params_string = match params_string.char_indices().nth(400) {
-            None => params_string,
-            Some((idx, _)) => params_string[..idx].to_string(),
-        };
-        trace!(
-            "waiting for response from call registry: {} {:?}",
-            &call_id,
-            params_string
-        );
+        // let mut params_string = format!("{:?}", call.get_params());
+        // params_string = match params_string.char_indices().nth(400) {
+        //     None => params_string,
+        //     Some((idx, _)) => params_string[..idx].to_string(),
+        // };
+        // trace!(
+        //     "waiting for response from call registry: {} {:?}",
+        //     &call_id,
+        //     params_string
+        // );
 
         let response_result = util::Wait::new(Duration::from_secs(15), Duration::from_millis(5))
             .until(|| response_rx.try_recv().ok());
-        trace!("received response for: {} {:?}", &call_id, params_string);
+        // trace!("received response for: {} {:?}", &call_id, params_string);
         protocol::parse_response::<C::ReturnObject>((response_result?)?)
     }
 
