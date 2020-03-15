@@ -138,11 +138,11 @@ impl Transport {
                     session_id: Some(session_id.as_str()),
                     message: &message_text,
                 };
-                let mut raw = message_text.clone();
-                raw.truncate(300);
-                trace!("Msg to tab: {}", &raw);
+                // let mut raw = message_text.clone();
+                // raw.truncate(300);
+                // trace!("Msg to tab: {}", &raw);
                 if let Err(e) = self.call_method_on_browser(target_method) {
-                    warn!("Failed to call method on browser: {:?}", e);
+                    // warn!("Failed to call method on browser: {:?}", e);
                     self.waiting_call_registry.unregister_call(call.id);
                     trace!("Unregistered callback: {:?}", call.id);
                     return Err(e);
