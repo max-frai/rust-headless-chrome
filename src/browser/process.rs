@@ -121,7 +121,7 @@ impl<'a> LaunchOptions<'a> {
 /// Via https://github.com/GoogleChrome/puppeteer/blob/master/lib/Launcher.js#L38
 static DEFAULT_ARGS: [&str; 23] = [
     "--disable-background-networking",
-    "--enable-features=NetworkService,NetworkServiceInProcess",
+    "--enable-features=NetworkService,NetworkServiceInProcess,VizDisplayCompositor",
     "--disable-background-timer-throttling",
     "--disable-backgrounding-occluded-windows",
     "--disable-breakpad",
@@ -275,6 +275,7 @@ impl Process {
             command.envs(process_envs);
         }
 
+        dbg!(&args);
         let process = TemporaryProcess(command.args(&args).stderr(Stdio::piped()).spawn()?);
         Ok(process)
     }
