@@ -261,7 +261,7 @@ impl Transport {
                         break;
                     }
                     Ok(message) => {
-                        //                        trace!("{:?}", message);
+                        trace!("{:?}", message);
                         match message {
                             Message::ConnectionShutdown => {
                                 info!("Received shutdown message");
