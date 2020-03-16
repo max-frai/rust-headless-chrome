@@ -286,7 +286,7 @@ impl Process {
             command.envs(process_envs);
         }
 
-        dbg!(&args);
+        // dbg!(&args);
         let process = TemporaryProcess(command.args(&args).stderr(Stdio::piped()).spawn()?);
         Ok(process)
     }

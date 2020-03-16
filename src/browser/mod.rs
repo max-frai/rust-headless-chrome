@@ -345,7 +345,7 @@ impl Browser {
                             _ => {
                                 // let mut raw_event = format!("{:?}", event);
                                 // raw_event.truncate(50);
-                                trace!("Unhandled event: {:?}", event);
+                                // trace!("Unhandled event: {:?}", event);
                             }
                         }
                     }
