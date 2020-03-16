@@ -138,11 +138,11 @@ impl Transport {
                     session_id: Some(session_id.as_str()),
                     message: &message_text,
                 };
-                // let mut raw = message_text.clone();
+                let mut raw = message_text.clone();
                 // raw.truncate(300);
-                // trace!("Msg to tab: {}", &raw);
+                trace!("Msg to tab: {}", &raw);
                 if let Err(e) = self.call_method_on_browser(target_method) {
-                    // warn!("Failed to call method on browser: {:?}", e);
+                    warn!("Failed to call method on browser: {:?}", e);
                     self.waiting_call_registry.unregister_call(call.id);
                     trace!("Unregistered callback: {:?}", call.id);
                     return Err(e);
@@ -158,20 +158,20 @@ impl Transport {
             }
         }
 
-        // let mut params_string = format!("{:?}", call.get_params());
+        let mut params_string = format!("{:?}", call.get_params());
         // params_string = match params_string.char_indices().nth(400) {
         //     None => params_string,
         //     Some((idx, _)) => params_string[..idx].to_string(),
         // };
-        // trace!(
-        //     "waiting for response from call registry: {} {:?}",
-        //     &call_id,
-        //     params_string
-        // );
+        trace!(
+            "waiting for response from call registry: {} {:?}",
+            &call_id,
+            params_string
+        );
 
-        let response_result = util::Wait::new(Duration::from_secs(15), Duration::from_millis(5))
+        let response_result = util::Wait::new(Duration::from_secs(25), Duration::from_millis(5))
             .until(|| response_rx.try_recv().ok());
-        // trace!("received response for: {} {:?}", &call_id, params_string);
+        trace!("received response for: {} {:?}", &call_id, params_string);
         protocol::parse_response::<C::ReturnObject>((response_result?)?)
     }
 
