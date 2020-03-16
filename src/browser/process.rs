@@ -119,7 +119,7 @@ impl<'a> LaunchOptions<'a> {
 
 /// These are passed to the Chrome binary by default.
 /// Via https://github.com/GoogleChrome/puppeteer/blob/master/lib/Launcher.js#L38
-static DEFAULT_ARGS: [&str; 29] = [
+static DEFAULT_ARGS: [&str; 30] = [
     "--disable-background-networking",
     "--enable-features=NetworkService,NetworkServiceInProcess,VizDisplayCompositor",
     "--disable-background-timer-throttling",
@@ -129,6 +129,7 @@ static DEFAULT_ARGS: [&str; 29] = [
     "--disable-component-extensions-with-background-pages",
     "--disable-default-apps",
     "--disable-dev-shm-usage",
+    "--deterministic-fetch",
     "--disable-extensions",
     // BlinkGenPropertyTrees disabled due to crbug.com/937609
     "--disable-features=TranslateUI,BlinkGenPropertyTrees",
