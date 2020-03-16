@@ -128,8 +128,7 @@ static DEFAULT_ARGS: [&str; 31] = [
     "--disable-client-side-phishing-detection",
     "--disable-component-extensions-with-background-pages",
     "--disable-default-apps",
-    // "--disable-dev-shm-usage",
-    "--js-flags=--max-old-space-size=4096",
+    "--disable-dev-shm-usage",
     "--disable-extensions",
     // BlinkGenPropertyTrees disabled due to crbug.com/937609
     "--disable-features=TranslateUI,BlinkGenPropertyTrees",
