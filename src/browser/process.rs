@@ -128,7 +128,8 @@ static DEFAULT_ARGS: [&str; 31] = [
     "--disable-client-side-phishing-detection",
     "--disable-component-extensions-with-background-pages",
     "--disable-default-apps",
-    "--disable-dev-shm-usage",
+    // "--disable-dev-shm-usage",
+    "--js-flags=--max-old-space-size=4096",
     "--disable-extensions",
     // BlinkGenPropertyTrees disabled due to crbug.com/937609
     "--disable-features=TranslateUI,BlinkGenPropertyTrees",
@@ -240,7 +241,8 @@ impl Process {
 
         let mut args = vec![
             port_option.as_str(),
-            "--disable-gpu",
+            // "--disable-gpu",
+            "--enable-gpu",
             // "--enable-logging",
             // "--verbose",
             // "--log-level=0",
