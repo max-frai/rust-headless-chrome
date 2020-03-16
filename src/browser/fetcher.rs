@@ -159,10 +159,10 @@ impl Fetcher {
         }
         #[cfg(target_os = "macos")]
         {
-            path.push("Google Chrome.app");
+            path.push("Chromium.app");
             path.push("Contents");
             path.push("MacOS");
-            path.push("Google Chrome");
+            path.push("Chromium");
         }
         #[cfg(windows)]
         {
