@@ -119,7 +119,7 @@ impl<'a> LaunchOptions<'a> {
 
 /// These are passed to the Chrome binary by default.
 /// Via https://github.com/GoogleChrome/puppeteer/blob/master/lib/Launcher.js#L38
-static DEFAULT_ARGS: [&str; 30] = [
+static DEFAULT_ARGS: [&str; 32] = [
     "--disable-background-networking",
     "--enable-features=NetworkService,NetworkServiceInProcess,VizDisplayCompositor",
     "--disable-background-timer-throttling",
@@ -130,11 +130,13 @@ static DEFAULT_ARGS: [&str; 30] = [
     "--disable-default-apps",
     "--disable-dev-shm-usage",
     "--deterministic-fetch",
+    "--disable-accelerated-2d-canvas",
     "--disable-extensions",
     // BlinkGenPropertyTrees disabled due to crbug.com/937609
     "--disable-features=TranslateUI,BlinkGenPropertyTrees",
     "--proxy-server='direct://'",
     "--dns-prefetch-disable",
+    "--ignore-certificate-errors",
     // "--incognito",
     "--disable-web-security",
     "--proxy-bypass-list=*",
@@ -241,8 +243,7 @@ impl Process {
 
         let mut args = vec![
             port_option.as_str(),
-            // "--disable-gpu",
-            "--enable-gpu",
+            "--disable-gpu",
             // "--enable-logging",
             // "--verbose",
             // "--log-level=0",
