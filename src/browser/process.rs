@@ -119,7 +119,7 @@ impl<'a> LaunchOptions<'a> {
 
 /// These are passed to the Chrome binary by default.
 /// Via https://github.com/GoogleChrome/puppeteer/blob/master/lib/Launcher.js#L38
-static DEFAULT_ARGS: [&str; 31] = [
+static DEFAULT_ARGS: [&str; 29] = [
     "--disable-background-networking",
     "--enable-features=NetworkService,NetworkServiceInProcess,VizDisplayCompositor",
     "--disable-background-timer-throttling",
@@ -134,7 +134,7 @@ static DEFAULT_ARGS: [&str; 31] = [
     "--disable-features=TranslateUI,BlinkGenPropertyTrees",
     "--proxy-server='direct://'",
     "--dns-prefetch-disable",
-    "--incognito",
+    // "--incognito",
     "--disable-web-security",
     "--proxy-bypass-list=*",
     "--disable-hang-monitor",
@@ -143,7 +143,7 @@ static DEFAULT_ARGS: [&str; 31] = [
     "--disable-prompt-on-repost",
     "--disable-renderer-backgrounding",
     "--disable-sync",
-    "--start-maximized",
+    // "--start-maximized",
     "--force-color-profile=srgb",
     "--metrics-recording-only",
     "--single-process",
