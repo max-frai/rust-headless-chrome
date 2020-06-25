@@ -299,12 +299,14 @@ impl Process {
         let re = Regex::new(r"listening on (.*/devtools/browser/.*)$").unwrap();
 
         let extract = |text: &str| -> Option<String> {
+            dbg!(text);
             let caps = re.captures(text);
             let cap = &caps?[1];
             Some(cap.into())
         };
 
         for line in reader.lines() {
+            dbg!(&line);
             let chrome_output = line?;
             trace!("Chrome output: {}", chrome_output);
 
@@ -323,7 +325,6 @@ impl Process {
     fn ws_url_from_output(child_process: &mut Child) -> Fallible<String> {
         let chrome_output_result = util::Wait::with_timeout(Duration::from_secs(30)).until(|| {
             let my_stderr = BufReader::new(child_process.stderr.as_mut().unwrap());
-            dbg!(&my_stderr);
             match Self::ws_url_from_reader(my_stderr) {
                 Ok(output_option) => {
                     if let Some(output) = output_option {
