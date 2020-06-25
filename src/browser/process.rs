@@ -137,7 +137,7 @@ static DEFAULT_ARGS: [&str; 32] = [
     "--proxy-server='direct://'",
     "--dns-prefetch-disable",
     "--ignore-certificate-errors",
-    "--incognito",
+    // "--incognito",
     "--disable-web-security",
     "--proxy-bypass-list=*",
     "--disable-hang-monitor",
@@ -154,6 +154,7 @@ static DEFAULT_ARGS: [&str; 32] = [
     "--enable-automation",
     "--password-store=basic",
     "--use-mock-keychain",
+    "--single-process",
 ];
 
 impl Process {
