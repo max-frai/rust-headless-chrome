@@ -335,6 +335,8 @@ impl Process {
             }
         });
 
+        dbg!(&chrome_output_result);
+
         if let Ok(output_result) = chrome_output_result {
             output_result
         } else {
