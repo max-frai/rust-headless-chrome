@@ -299,14 +299,14 @@ impl Process {
         let re = Regex::new(r"listening on (.*/devtools/browser/.*)$").unwrap();
 
         let extract = |text: &str| -> Option<String> {
-            // dbg!(text);
+            dbg!(text);
             let caps = re.captures(text);
             let cap = &caps?[1];
             Some(cap.into())
         };
 
         for line in reader.lines() {
-            // dbg!(&line);
+            dbg!(&line);
             let chrome_output = line?;
             trace!("Chrome output: {}", chrome_output);
 
