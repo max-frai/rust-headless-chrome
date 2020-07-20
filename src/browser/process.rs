@@ -299,7 +299,6 @@ impl Process {
         let re = Regex::new(r"listening on (.*/devtools/browser/.*)$").unwrap();
 
         let extract = |text: &str| -> Option<String> {
-            dbg!(text);
             let caps = re.captures(text);
             let cap = &caps?[1];
             Some(cap.into())
