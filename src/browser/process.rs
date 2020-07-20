@@ -314,6 +314,7 @@ impl Process {
             }
 
             if let Some(answer) = extract(&chrome_output) {
+                println!("Port answer is ok: {}", answer);
                 return Ok(Some(answer));
             }
         }
