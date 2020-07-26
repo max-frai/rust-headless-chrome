@@ -305,7 +305,7 @@ impl Process {
         };
 
         for line in reader.lines() {
-            dbg!(&line);
+            // dbg!(&line);
             let chrome_output = line?;
             trace!("Chrome output: {}", chrome_output);
 
