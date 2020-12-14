@@ -305,7 +305,7 @@ impl Process {
         };
 
         for line in reader.lines() {
-            dbg!(&line);
+            // dbg!(&line);
             let chrome_output = line?;
             trace!("Chrome output: {}", chrome_output);
 
@@ -314,7 +314,7 @@ impl Process {
             }
 
             if let Some(answer) = extract(&chrome_output) {
-                println!("Port answer is ok: {}", answer);
+                // println!("Port answer is ok: {}", answer);
                 return Ok(Some(answer));
             }
         }
@@ -325,7 +325,6 @@ impl Process {
     fn ws_url_from_output(child_process: &mut Child) -> Fallible<String> {
         let chrome_output_result = util::Wait::with_timeout(Duration::from_secs(30)).until(|| {
             let my_stderr = BufReader::new(child_process.stderr.as_mut().unwrap());
-            dbg!(&my_stderr);
             match Self::ws_url_from_reader(my_stderr) {
                 Ok(output_option) => {
                     if let Some(output) = output_option {
